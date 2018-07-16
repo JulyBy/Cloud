@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +14,10 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FindFragment extends Fragment{
 
     SmartTabLayout viewPagerTab;
     ViewPager innerViewPager;
-    List<String> titleList;
-    PagerTabStrip pagerTabStrip;
-    List<Fragment> innerFragmentList;
 
     public static FindFragment newInstance(Bundle params){
         FindFragment fragment  = new FindFragment();
@@ -45,35 +38,26 @@ public class FindFragment extends Fragment{
     }
 
     private void initData(){
-        /**
-         * ViewPager页卡设置标题
-         */
-        titleList = new ArrayList<>();
-        titleList.add("个性推荐");
-        titleList.add("主播电台");
-
-
-        /**
-         * 通过Fragment作为ViewPager的数据源
-         */
-        innerFragmentList = new ArrayList<>();
-        innerFragmentList.add(new RecommendFragment());
-        innerFragmentList.add(new BroadcasterFragment());
-
-        /**
-         * 初始化ViewPager
-         */
 
 //        InnerFragmentPagerAdapter innerFragmentPagerAdapter = new InnerFragmentPagerAdapter(getFragmentManager(),innerFragmentList,titleList);
 
+        /**
+         * 初始化适配器adapter，并绑定数据源
+         */
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getFragmentManager(), FragmentPagerItems.with(getContext())
                 .add(R.string.find_recommend, RecommendFragment.class)
                 .add(R.string.find_broadcaster, BroadcasterFragment.class)
                 .create());
 
+        /**
+         * 给ViewPager设置适配器
+         */
         innerViewPager.setAdapter(adapter);
 
+        /**
+         * 给SmartTab是被ViewPager
+         */
         viewPagerTab.setViewPager(innerViewPager);
     }
 
