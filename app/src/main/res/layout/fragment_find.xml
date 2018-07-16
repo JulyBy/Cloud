@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorRed">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp">
+
+        <ImageView
+            android:id="@+id/microphone"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/microphone"/>
+        <EditText
+            android:paddingLeft="10dp"
+            android:background="@drawable/cricle_bt_bg"
+            android:id="@+id/find_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:paddingLeft="10dp"
+            android:id="@+id/voice"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/voice"/>
+    </LinearLayout>
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/view_pager_tab"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        app:stl_clickable="true"
+        app:stl_underlineColor="@color/colorRed"
+        app:stl_indicatorColor="@color/colorWhite"
+        app:stl_indicatorCornerRadius="1dp"
+        app:stl_indicatorThickness="4dp"
+        app:stl_indicatorWidth="30dp"
+        app:stl_dividerColor="@color/colorRed"
+        app:stl_defaultTabTextSize="15sp"
+        app:stl_distributeEvenly="true"
+        app:stl_defaultTabTextColor="@color/colorWhite"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_inner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>
